@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khải Nguyên Transport - Xe khách Đà Nẵng</title>
+    <meta name="description"
+        content="Khải Nguyên cung cấp dịch vụ xe khách du lịch chất lượng tại Đà Nẵng. Đặt xe nhanh chóng qua Zalo. Uy tín – tiện lợi – giá cả hợp lý.">
+    <link rel="stylesheet" href="nhaxe.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .language-switcher {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switcher button {
+            padding: 8px 12px;
+            border: none;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .language-switcher button:hover {
+            background-color: #ddd;
+        }
+
+        .language-switcher button.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        const translations = {
+            vi: {
+                title: "Khải Nguyên Transport - Xe khách Đà Nẵng",
+                meta_description: "Khải Nguyên cung cấp dịch vụ xe khách du lịch chất lượng tại Đà Nẵng. Đặt xe nhanh chóng qua Zalo. Uy tín – tiện lợi – giá cả hợp lý.",
+                main_title: "Khải Nguyên transport xe du lịch chất lượng",
+                subtitle: "Dịch vụ xe khách du lịch an toàn, tận tâm khu vực Đà Nẵng",
+                hotline: "Hotline: 0768547306",
+                search_placeholder: "Tìm kiếm...",
+                menu: ["Trang chủ", "Giới thiệu", "Dịch vụ", "Địa điểm du lịch", "Chăm sóc khách hàng", "Liên hệ"],
+                bubble_guide: "👉 Nhấn vào một trong<br>các icon để đặt xe",
+                book_title: "Đặt vé xe trực tuyến",
+                name_label: "Họ và tên / Fullname",
+                name_placeholder: "Họ và tên",
+                phone_label: "Số điện thoại / Hotline",
+                phone_placeholder: "Số điện thoại/Hotline",
+                departure_label: "Ngày đi",
+                departure_placeholder: "Ngày đi",
+                return_label: "Ngày trở về",
+                return_placeholder: "Ngày trở về",
+                confirm_button: "Xác nhận đặt vé",
+                about_title: "Nhà xe du lịch NguyenKhai transport và một số điều bạn cần biết:",
+                about_text: "<strong>KhaiNguyen transport</strong> là nơi cung cấp cho bạn những dịch vụ về du lịch, khám phá cảnh quan thiên nhiên thành phố Đà Nẵng đáng sống. <strong>KhaiNguyen transport cung cấp cho bạn những trải nghiệm tuyệt vời trên những hành trình và luôn đảm bảo với khách hàng dễ dàng đặt xe chỉ trong 1 lần nhấn - Uy tín - Chất lượng - Giá cả phải chăng đối với mọi đối tượng</strong>",
+                about_title2: "Tận tâm - tận tình - chất lượng <strong>khi đến với KhaiNguyen transport:</strong>",
+                about_text2: "KhaiNguyen transport cung cấp cho quý khách hàng một trải nghiệm đáng nhớ, thú vị",
+                services_title: "Đa dạng dịch vụ",
+                service1_title: "Thuê xe du lịch",
+                service1_text: "Nguyên Khải cho thuê xe du lịch với đội ngũ tài xế chuyên nghiệp và thân thiện...",
+                service2_title: "Vé - Tour du lịch",
+                service2_text: "Nguyên Khải mang đến cho bạn những trải nghiệm tuyệt vời nhất tại các điểm đến hàng đầu...",
+                service3_title: "Thuê xe tự lái",
+                service3_text: "Làm chủ hành trình của bạn với dịch vụ cho thuê ô tô tự lái cao cấp từ Nguyên Khải...",
+                tourist_title: "Địa điểm du lịch nổi tiếng tại thành phố Đà Nẵng đáng sống",
+                carousel_prev: "← Trở lại",
+                carousel_next: "Tiếp →",
+                more_button: "Xem thêm",
+                support_title: "CHĂM SÓC KHÁCH HÀNG",
+                support_guide: "👉 Nhấn vào để được nhà xe Khải Nguyên<br>hỗ trợ một cách tốt nhất"
+            },
+            en: {
+                title: "Khải Nguyên Transport - Da Nang Bus Service",
+                meta_description: "Khải Nguyên provides high-quality tourist bus services in Da Nang. Book quickly via Zalo. Reliable – convenient – reasonably priced.",
+                main_title: "Khải Nguyên Transport Quality Tourist Bus",
+                subtitle: "Safe and dedicated tourist bus services in Da Nang",
+                hotline: "Hotline: 0768547306",
+                search_placeholder: "Search...",
+                menu: ["Home", "About Us", "Services", "Tourist Destinations", "Customer Support", "Contact"],
+                bubble_guide: "👉 Click on one of<br>the icons to book a bus",
+                book_title: "Book Bus Tickets Online",
+                name_label: "Full Name",
+                name_placeholder: "Full Name",
+                phone_label: "Phone Number / Hotline",
+                phone_placeholder: "Phone Number/Hotline",
+                departure_label: "Departure Date",
+                departure_placeholder: "Departure Date",
+                return_label: "Return Date",
+                return_placeholder: "Return Date",
+                confirm_button: "Confirm Booking",
+                about_title: "Khải Nguyên Transport Bus Service and What You Need to Know:",
+                about_text: "<strong>Khải Nguyên Transport</strong> provides tourism services, exploring the natural beauty of the livable city of Da Nang. <strong>Khải Nguyên Transport offers you wonderful experiences on your journeys, ensuring easy bus booking with just one click – Reliable – High Quality – Affordable Prices for all customers.</strong>",
+                about_title2: "Dedicated – Attentive – High Quality <strong>with Khải Nguyên Transport:</strong>",
+                about_text2: "Khải Nguyên Transport provides customers with a memorable and exciting experience.",
+                services_title: "Diverse Services",
+                service1_title: "Tourist Bus Rental",
+                service1_text: "Khải Nguyên offers tourist bus rentals with a team of professional and friendly drivers...",
+                service2_title: "Tickets - Tours",
+                service2_text: "Khải Nguyên brings you the best experiences at top destinations...",
+                service3_title: "Self-Drive Car Rental",
+                service3_text: "Take control of your journey with Khải Nguyên’s premium self-drive car rental service...",
+                tourist_title: "Famous Tourist Destinations in the Livable City of Da Nang",
+                carousel_prev: "← Previous",
+                carousel_next: "Next →",
+                more_button: "Learn More",
+                support_title: "CUSTOMER SUPPORT",
+                support_guide: "👉 Click to get the best support from<br>Khải Nguyên Transport"
+            },
+            zh: {
+                title: "凯源运输 - 岘港客车服务",
+                meta_description: "凯源提供岘港高质量的旅游客车服务。通过Zalo快速预订。可靠 - 便捷 - 价格合理。",
+                main_title: "凯源运输优质旅游客车",
+                subtitle: "岘港安全且尽心的旅游客车服务",
+                hotline: "热线: 0768547306",
+                search_placeholder: "搜索...",
+                menu: ["首页", "关于我们", "服务", "旅游景点", "客户支持", "联系我们"],
+                bubble_guide: "👉 点击以下任一<br>图标预订车辆",
+                book_title: "在线预订车票",
+                name_label: "姓名",
+                name_placeholder: "姓名",
+                phone_label: "电话号码 / 热线",
+                phone_placeholder: "电话号码/热线",
+                departure_label: "出发日期",
+                departure_placeholder: "出发日期",
+                return_label: "返回日期",
+                return_placeholder: "返回日期",
+                confirm_button: "确认预订",
+                about_title: "凯源运输客车服务及您需要了解的事项：",
+                about_text: "<strong>凯源运输</strong> 为您提供旅游服务，探索宜居城市岘港的自然美景。<strong>凯源运输为您提供精彩的旅程体验，确保只需一次点击即可轻松预订车辆 - 可靠 - 高质量 - 价格实惠，适合所有客户。</strong>",
+                about_title2: "尽心 - 周到 - 高质量 <strong>与凯源运输同在：</strong>",
+                about_text2: "凯源运输为客户提供难忘且激动人心的体验。",
+                services_title: "多样化服务",
+                service1_title: "旅游客车租赁",
+                service1_text: "凯源提供旅游客车租赁服务，拥有专业且友好的司机团队...",
+                service2_title: "车票 - 旅游套餐",
+                service2_text: "凯源为您带来顶级旅游目的地的最佳体验...",
+                service3_title: "自驾车租赁",
+                service3_text: "通过凯源的高端自驾车租赁服务，掌控您的旅程...",
+                tourist_title: "岘港宜居城市的著名旅游景点",
+                carousel_prev: "← 上一个",
+                carousel_next: "下一个 →",
+                more_button: "了解更多",
+                support_title: "客户支持",
+                support_guide: "👉 点击以获得最佳支持，<br>来自凯源运输"
+            },
+            ko: {
+                title: "카이응우옌 트랜스포트 - 다낭 버스 서비스",
+                meta_description: "카이응우옌은 다낭에서 고품질 관광 버스 서비스를 제공합니다. Zalo를 통해 빠르게 예약하세요. 신뢰할 수 있고 편리하며 합리적인 가격.",
+                main_title: "카이응우옌 트랜스포트 고품질 관광 버스",
+                subtitle: "다낭에서 안전하고 헌신적인 관광 버스 서비스",
+                hotline: "핫라인: 0768547306",
+                search_placeholder: "검색...",
+                menu: ["홈", "회사 소개", "서비스", "관광지", "고객 지원", "연락처"],
+                bubble_guide: "👉 아래 아이콘 중 하나를<br>클릭하여 차량을 예약하세요",
+                book_title: "온라인 버스 티켓 예약",
+                name_label: "성함",
+                name_placeholder: "성함",
+                phone_label: "전화번호 / 핫라인",
+                phone_placeholder: "전화번호/핫라인",
+                departure_label: "출발 날짜",
+                departure_placeholder: "출발 날짜",
+                return_label: "귀환 날짜",
+                return_placeholder: "귀환 날짜",
+                confirm_button: "예약 확인",
+                about_title: "카이응우옌 트랜스포트 버스 서비스와 알아야 할 사항:",
+                about_text: "<strong>카이응우옌 트랜스포트</strong>는 살기 좋은 도시 다낭의 자연 경관을 탐험하는 관광 서비스를 제공합니다. <strong>카이응우옌 트랜스포트는 한 번의 클릭으로 차량을 쉽게 예약할 수 있는 멋진 여행 경험을 제공하며, 신뢰성, 고품질, 모든 고객에게 적합한 합리적인 가격을 보장합니다.</strong>",
+                about_title2: "헌신적이고 세심하며 고품질 <strong>카이응우옌 트랜스포트와 함께:</strong>",
+                about_text2: "카이응우옌 트랜스포트는 고객에게 기억에 남고 흥미로운 경험을 제공합니다.",
+                services_title: "다양한 서비스",
+                service1_title: "관광 버스 대여",
+                service1_text: "카이응우옌은 전문적이고 친절한 운전자 팀과 함께 관광 버스 대여 서비스를 제공합니다...",
+                service2_title: "티켓 - 투어",
+                service2_text: "카이응우옌은 최고의 관광지에서 최상의 경험을 제공합니다...",
+                service3_title: "자동차 셀프 드라이브 대여",
+                service3_text: "카이응우옌의 프리미엄 셀프 드라이브 자동차 대여 서비스로 여행을 주도하세요...",
+                tourist_title: "살기 좋은 도시 다낭의 유명한 관광지",
+                carousel_prev: "← 이전",
+                carousel_next: "다음 →",
+                more_button: "자세히 보기",
+                support_title: "고객 지원",
+                support_guide: "👉 카이응우옌 트랜스포트로부터<br>최고의 지원을 받으려면 클릭하세요"
+            }
+        };
+
+        function switchLanguage(lang) {
+            $('html').attr('lang', lang);
+            $('title').text(translations[lang].title);
+            $('meta[name="description"]').attr('content', translations[lang].meta_description);
+            $('.main-title').html(translations[lang].main_title);
+            $('.title p:not(.hotline)').text(translations[lang].subtitle);
+            $('.hotline').text(translations[lang].hotline);
+            $('.search-box input').attr('placeholder', translations[lang].search_placeholder);
+            $('.menu a').each(function (i) {
+                $(this).text(translations[lang].menu[i]);
+            });
+            $('#bubble').html(translations[lang].bubble_guide);
+            $('.car_online h2').text(translations[lang].book_title);
+            $('.car_online p').eq(0).text(translations[lang].name_label);
+            $('.car_online input[name="name"]').attr('placeholder', translations[lang].name_placeholder);
+            $('.car_online p').eq(1).text(translations[lang].phone_label);
+            $('.car_online input[name="sdt"]').attr('placeholder', translations[lang].phone_placeholder);
+            $('.car_online p').eq(2).text(translations[lang].departure_label);
+            $('.car_online input[name="datetime"]').attr('placeholder', translations[lang].departure_placeholder);
+            $('.car_online p').eq(3).text(translations[lang].return_label);
+            $('.car_online input[name="backtime"]').attr('placeholder', translations[lang].return_placeholder);
+            $('.car_online input[type="submit"]').val(translations[lang].confirm_button);
+            $('#gioithieu .about-us h2').html(translations[lang].about_title);
+            $('#gioithieu .about-us p').html(translations[lang].about_text);
+            $('#gioithieu .about-us2 h2').html(translations[lang].about_title2);
+            $('#gioithieu .about-us2 p').text(translations[lang].about_text2);
+            $('#dichvu h2').text(translations[lang].services_title);
+            $('.service-cards .card.blue h3').text(translations[lang].service1_title);
+            $('.service-cards .card.blue p').text(translations[lang].service1_text);
+            $('.service-cards .card.yellow h3').text(translations[lang].service2_title);
+            $('.service-cards .card.yellow p').text(translations[lang].service2_text);
+            $('.service-cards .card.red h3').text(translations[lang].service3_title);
+            $('.service-cards .card.red p').text(translations[lang].service3_text);
+            $('#diadiemdulich h2').text(translations[lang].tourist_title);
+            $('.carousel-btn.prev').text(translations[lang].carousel_prev);
+            $('.carousel-btn.next').text(translations[lang].carousel_next);
+            $('.card-info h3').text(translations[lang].service1_title);
+            $('.card-info p').text(translations[lang].service1_text);
+            $('.card-info .more').text(translations[lang].more_button);
+            $('#chamsockhachhang h2').text(translations[lang].support_title);
+            $('#chamsockhachhang .guide p').html(translations[lang].support_guide);
+            $('.language-switcher button').removeClass('active');
+            $(`.language-switcher button[data-lang="${lang}"]`).addClass('active');
+        }
+
+        $(document).ready(function () {
+            $('.menu a').click(function (e) {
+                e.preventDefault();
+                const label = $(this).text().trim().toLowerCase();
+                const idMap = {
+                    'trang chủ': 'top',
+                    'giới thiệu': 'gioithieu',
+                    'dịch vụ': 'dichvu',
+                    'địa điểm du lịch': 'diadiemdulich',
+                    'chăm sóc khách hàng': 'chamsockhachhang',
+                    'liên hệ': 'lienhe',
+                    'home': 'top',
+                    'about us': 'gioithieu',
+                    'services': 'dichvu',
+                    'tourist destinations': 'diadiemdulich',
+                    'customer support': 'chamsockhachhang',
+                    'contact': 'lienhe',
+                    '首页': 'top',
+                    '关于我们': 'gioithieu',
+                    '服务': 'dichvu',
+                    '旅游景点': 'diadiemdulich',
+                    '客户支持': 'chamsockhachhang',
+                    '联系我们': 'lienhe',
+                    '홈': 'top',
+                    '회사 소개': 'gioithieu',
+                    '서비스': 'dichvu',
+                    '관광지': 'diadiemdulich',
+                    '고객 지원': 'chamsockhachhang',
+                    '연락처': 'lienhe'
+                };
+                const targetId = idMap[label];
+                if (targetId && $('#' + targetId).length) {
+                    $('html, body').animate({
+                        scrollTop: $('#' + targetId).offset().top - 50
+                    }, 800);
+                }
+            });
+
+            $('.language-switcher button').click(function () {
+                const lang = $(this).data('lang');
+                switchLanguage(lang);
+            });
+
+            switchLanguage('vi');
+        });
+    </script>
+    <header class="title" id="top">
+        <div class="language-switcher">
+            <button data-lang="vi" class="active">Tiếng Việt</button>
+            <button data-lang="en">English</button>
+            <button data-lang="zh">中文</button>
+            <button data-lang="ko">한국어</button>
+        </div>
+        <h1 class="main-title">Khải Nguyên transport xe du lịch chất lượng</h1>
+        <p>Dịch vụ xe khách du lịch an toàn, tận tâm khu vực Đà Nẵng</p>
+        <p class="hotline">Hotline: 0768547306</p>
+        <div class="hover-content">
+            <div class="search-box">
+                <input type="text" placeholder="Tìm kiếm...">
+                <i class="fas fa-search icon"></i>
+            </div>
+            <div class="menu-container">
+                <nav class="menu" id="dropdownMenu" style="display: flex;">
+                    <a href="#">Trang chủ</a>
+                    <a href="#">Giới thiệu</a>
+                    <a href="#">Dịch vụ</a>
+                    <a href="#">Địa điểm du lịch</a>
+                    <a href="#">Chăm sóc khách hàng</a>
+                    <a href="#">Liên hệ</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="social-icons">
+            <div class="bubble-guide" id="bubble">
+                👉 Nhấn vào một trong<br>các icon để đặt xe
+            </div>
+            <a href="https://zalo.me/0768547306" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo"
+                    class="shake">
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61578131127482" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
+                    alt="Facebook" class="shake">
+            </a>
+            <a href="https://www.facebook.com/messages/t/736523812871894" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/128/5968/5968771.png" alt="Messenger" class="shake">
+            </a>
+        </div>
+        <form action="www/khainguyen.php" method="post">
+            <div class="car_online">
+                <strong>
+                    <h2>Đặt vé xe trực tuyến</h2>
+                </strong>
+
+                <p>Họ và tên / Fullname</p>
+                <input type="text" name="name" placeholder="Họ và tên" required>
+
+                <p>Số điện thoại / Hotline</p>
+                <input type="tel" name="sdt" placeholder="Số điện thoại/Hotline" required>
+
+                <p>Ngày đi</p>
+                <input type="datetime-local" name="datetime" required>
+
+                <p>Ngày trở về</p>
+                <input type="datetime-local" name="backtime">
+
+                <br>
+                <input type="submit" value="Xác nhận đặt vé" class="acept" style="padding-bottom: 30px;">
+            </div>
+        </form>
+
+        <div class="nhaxe">
+            <section id="gioithieu">
+                <div class="gioithieu">
+                    <div class="about-us">
+                        <h2>Nhà xe du lịch NguyenKhai transport và một số điều bạn cần biết:</h2>
+                        <p><strong>KhaiNguyen transport</strong> là nơi cung cấp cho bạn những
+                            dịch vụ về du lịch, khám phá cảnh quan thiên nhiên thành phố Đà Nẵng
+                            đáng sống. <strong>KhaiNguyen transport cung cấp cho bạn những trải nghiệm
+                                tuyệt vời trên những hành trình và luôn đảm bảo với khách hàng dễ dàng
+                                đặt xe chỉ trong 1 lần nhấn - Uy tín - Chất lượng - Giá cả phải chăng đối
+                                với mọi đối tượng</strong></p>
+                    </div>
+                    <div class="about-us2">
+                        <h2>Tận tâm - tận tình - chất lượng <strong>khi đến với KhaiNguyen transport:</strong></h2>
+                        <p class="dif">KhaiNguyen transport cung cấp cho quý khách hàng một trải nghiệm đáng nhớ, thú
+                            vị
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="services" id="dichvu">
+                <h2>Đa dạng dịch vụ</h2>
+                <div class="service-cards">
+                    <div class="card blue">
+                        <img src="xekhach16cho.jpg" alt="Thuê xe du lịch">
+                        <h3>Thuê xe du lịch</h3>
+                        <p>Nguyên Khải cho thuê xe du lịch với đội ngũ tài xế chuyên nghiệp và thân thiện...</p>
+                    </div>
+                    <div class="card yellow">
+                        <img src="xekhach16cho.jpg" alt="Vé - Tour du lịch">
+                        <h3>Vé - Tour du lịch</h3>
+                        <p>Nguyên Khải mang đến cho bạn những trải nghiệm tuyệt vời nhất tại các điểm đến hàng
+                            đầu...</p>
+                    </div>
+                    <div class="card red">
+                        <img src="xekhach16cho.jpg" alt="Thuê xe tự lái">
+                        <h3>Thuê xe tự lái</h3>
+                        <p>Làm chủ hành trình của bạn với dịch vụ cho thuê ô tô tự lái cao cấp từ Nguyên Khải...</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+ <section id="diadiemdulich">
+        <div class="tourist-attraction">
+            <h2>Địa điểm du lịch nổi tiếng tại thành phố Đà Nẵng đáng sống</h2>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="scrollCarousel(-1)">← Trở lại</button>
+                <div class="destination-carousel" id="carousel">
+                    <div class="card-info">
+                        <img src="https://vietnamnomad.com/wp-content/uploads/2022/10/Son-Tra-Peninsula-Da-Nang-Travel-Guide-Vietnamnomad.jpg" alt="Bán đảo Sơn Trà">
+                        <h4>Bán đảo Sơn Trà</h4>
+                        <a>Ngắm toàn cảnh thành phố từ trên cao như đỉnh Bàn Cờ, chùa Linh Ứng, nhà Vọng Cảnh, hải đăng Sơn Trà, trạm radar "mắt thần Đông Dương"...</a>
+                        <button type="button" class="more">Xem thêm</button>
+                    </div>
+                    <div class="card-info">
+                        <img src="https://vietnam.travel/sites/default/files/inline-images/shutterstock_1346056832.jpg" alt="Bà Nà Hills">
+                        <h4>Bà Nà Hills</h4>
+                        <a>Các điểm tham quan nổi bật như chùa Linh Ứng, Hầm rượu Debay, vườn hoa Le Jardin D'Amour, Cầu Vàng...</a>
+                        <button type="button" class="more">Xem thêm</button>
+                    </div>
+                    <div class="card-info">
+                        <img src="https://danangbest.com/upload_content/gieng-troi-da-nang-1.webp" alt="Giếng Trời">
+                        <h4>Giếng Trời</h4>
+                        <a>Có cảnh vật hoang sơ chính là nguồn cảm hứng đối với dân phượt, với các loại hình dã ngoại như trekking, leo núi, cắm trại hay tắm suối...</a>
+                        <button type="button" class="more">Xem thêm</button>
+                    </div>
+                    <div class="card-info">
+                        <img src="https://danangopentour.vn/uploads/images/images/nui-ngu-hanh-son-da-nang.jpg" alt="Ngũ Hành Sơn">
+                        <h4>Ngũ Hành Sơn</h4>
+                        <a>Theo con đường ven biển trải dài hút mắt về phía Hội An, mở ra trước mắt du khách là "hòn non bộ" khổng lồ mang tên Ngũ Hành Sơn. Với các tên gọi được đặt theo thuyết ngũ hành gồm Kim Sơn, Mộc Sơn, Thủy Sơn, Hỏa Sơn và Thổ Sơn...</a>
+                        <button type="button" class="more">Xem thêm</button>
+                    </div>
+                    <div class="card-info">
+                        <img src="https://hn.ss.bfcplatform.vn/tckt/2022/12/22A12017-4.jpg" alt="Đèo Hải Vân">
+                        <h4>Đèo Hải Vân</h4>
+                        <a>Nơi này từng được Jeremy Clarkson, dẫn show truyền hình thực tế Top Gear (Anh) nhận xét là "một trong những cung đường ven biển đẹp nhất thế giới"...</a>
+                        <button type="button" class="more">Xem thêm</button>
+                    </div>
+                    <div class="card-info">
+                        <img src="https://sakos.vn/wp-content/uploads/2023/04/song-hoai-5f928a50141ac-1.jpeg" alt="Phố cổ Hội An">
+                        <h4>Phố cổ Hội An</h4>
+                        <a>Những mái ngói cũ phủ đầy rêu phong, những con đường ngập trong sắc đỏ của đèn lồng, những bức hoành phi được chạm trổ tinh vi, tất cả như đưa ta về với một thế giới của vài trăm năm trước...</a>
+                        <button type="button" class="more">Xem thêm</button>
+                    </div>
+                    <div class="card-info">
+                        <img src="https://blisshoian.com/wp-content/uploads/2024/10/cham-island-1.webp" alt="Cù Lao Chàm">
+                        <h4>Cù Lao Chàm</h4>
+                        <a>Được mệnh danh là "Hòn ngọc giữa biển Đông", thiên đường lý tưởng cho những chuyến đi khám phá, nghỉ dưỡng...</a>
+                        <button type="button" class="more">Xem thêm</button>
+                    </div>
+                    <div class="card-info">
+                        <img src="https://statics.vinpearl.com/Vinwonders-Nam-Hoi-An-2_1653733583.jpg" alt="Vinpearl Nam Hội An">
+                        <h4>Vinpearl Nam Hội An</h4>
+                        <a>Vinpearl Nam Hội An là khu vui chơi giải trí đẳng cấp cách trung tâm Đà Nẵng về phía Nam khoảng 50km nằm trong khu nghỉ dưỡng Vinpearl, thám phá loài thú hoang dã cùng nhiều hoạt động hấp dẫn khác...</a>
+                        <button type="button" class="more">Xem thêm</button>
+                    </div>
+                    <div class="card-info">
+                        <img src="https://cms.vietnamcoracle.com/wp-content/uploads/2024/08/VC-My-Son-Finished-61-title-final.jpg" alt="Thánh địa Mỹ Sơn">
+                        <h4>Thánh địa Mỹ Sơn</h4>
+                        <a>Thánh địa Mỹ Sơn từng là trung tâm tôn giáo – nghi lễ quan trọng của vương quốc Chăm Pa (tồn tại từ thế kỷ 4 đến thế kỷ 13). Đây là một quần thể kiến trúc đền tháp Hindu giáo độc đáo, thờ thần Shiva và các vị vua Chăm được thần hóa...</a>
+                        <button type="button" class="more">Xem thêm</button>
+                    </div>
+                </div>
+                <button class="carousel-btn next" onclick="scrollCarousel(1)">Tiếp →</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('carousel');
+            const scrollAmount = 320;
+            carousel.scrollLeft += direction * scrollAmount;
+        }
+
+        // Auto scroll functionality
+        let autoScrollInterval;
+        
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+                const carousel = document.getElementById('carousel');
+                const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                
+                if (carousel.scrollLeft >= maxScroll) {
+                    carousel.scrollLeft = 0;
+                } else {
+                    carousel.scrollLeft += 320;
+                }
+            }, 4000);
+        }
+
+        function stopAutoScroll() {
+            clearInterval(autoScrollInterval);
+        }
+
+        // Start auto scroll when page loads
+        window.addEventListener('load', startAutoScroll);
+
+        // Stop auto scroll when user interacts
+        document.getElementById('carousel').addEventListener('mouseenter', stopAutoScroll);
+        document.getElementById('carousel').addEventListener('mouseleave', startAutoScroll);
+    </script>
+    <div class="cskh">
+        <section class="support" id="chamsockhachhang">
+            <h2>CHĂM SÓC KHÁCH HÀNG</h2>
+            <div class="social-icons-cskh">
+                <div class="guide">
+                    <p>👉 Nhấn vào để được nhà xe Khải Nguyên<br>hỗ trợ một cách tốt nhất</p>
+                </div>
+                <div class="icon-group">
+                    <a href="https://wa.me/84768547306" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    </a>
+                    <a href="https://zalo.me/0768547306" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo">
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61578131127482" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
+                            alt="Facebook">
+                    </a>
+                    <a href="https://www.facebook.com/messages/t/736523812871894" target="_blank">
+                        <img src="https://cdn-icons-png.flaticon.com/128/5968/5968771.png" alt="Messenger">
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

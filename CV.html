@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV of Nguyễn Mai Trọng Vĩ</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f5f5f5;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .infomation-me {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px 20px;
+        border-radius: 20px;
+        margin-bottom: 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .infomation-me h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .infomation-me p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .section {
+        background: white;
+        margin-bottom: 30px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .section:hover {
+        transform: translateY(-5px);
+    }
+
+    .section-header {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .section-content {
+        padding: 30px;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .contact-item {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .contact-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .contact-item h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    .contact-item p {
+        font-size: 1rem;
+    }
+
+    .contact-item a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .education-content {
+        background: #f8f9fa;
+        padding: 25px;
+        border-radius: 15px;
+        border-left: 5px solid #4facfe;
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 15px;
+    }
+
+    .skill-item {
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        padding: 20px;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+    }
+
+    .skill-item:hover {
+        transform: translateY(-3px);
+        border-color: #4facfe;
+        box-shadow: 0 8px 20px rgba(79, 172, 254, 0.2);
+    }
+
+    .skill-item strong {
+        color: #2c3e50;
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+
+    .project-card {
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        border-radius: 15px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 35px rgba(168, 237, 234, 0.4);
+        border-color: #00d2ff;
+    }
+
+    .project-card p {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    .project-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin-top: 1rem;
+        position: relative;
+    }
+
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .project-image:hover img {
+        transform: scale(1.05);
+    }
+
+    .project-image img {
+        cursor: pointer;
+    }
+
+    .project-image:not(:has(img))::before {
+        content: "Project Screenshot";
+        color: white;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .image-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(5px);
+    }
+
+    .image-modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: modalFadeIn 0.3s ease-out;
+    }
+
+    .modal-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        margin: auto;
+        animation: modalZoomIn 0.3s ease-out;
+    }
+
+    .modal-content img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .close-modal {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .close-modal:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+
+    .modal-caption {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        right: 0;
+        color: white;
+        text-align: center;
+        font-size: 1.1rem;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes modalZoomIn {
+        from {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .project-image::after {
+        content: "🔍 Click to enlarge";
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .project-image:hover::after {
+        opacity: 1;
+    }
+
+    .experience-list {
+        list-style: none;
+    }
+
+    .experience-item {
+        background: #f8f9fa;
+        margin-bottom: 20px;
+        padding: 25px;
+        border-radius: 15px;
+        border-left: 5px solid #28a745;
+        transition: all 0.3s ease;
+    }
+
+    .experience-item:hover {
+        background: #e9ecef;
+        transform: translateX(5px);
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 10px;
+        }
+
+        .infomation-me {
+            padding: 30px 15px;
+        }
+
+        .infomation-me h1 {
+            font-size: 2rem;
+        }
+
+        .infomation-me p {
+            font-size: 1rem;
+        }
+
+        .section-content {
+            padding: 20px;
+        }
+
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .skills-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .projects-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .infomation-me h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        .infomation-me p {
+            font-size: 0.9rem;
+        }
+
+        .section-content {
+            padding: 15px;
+        }
+
+        .contact-item {
+            padding: 20px;
+        }
+
+        .skill-item {
+            padding: 15px;
+        }
+
+        .project-card {
+            padding: 20px;
+        }
+
+        .experience-item {
+            padding: 20px;
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .section {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <header class="infomation-me">
+            <h1>Some Information About Me</h1>
+            <p>My name is Nguyễn Mai Trọng Vĩ. I'm a student at Duy Tan University, and code is the first thing I really
+                love. I'm studying IT (Information Technology), and my programming languages include HTML, CSS, JS, PHP,
+                SQL, Python, and C++. I use Visual Studio Code for development and Kali Linux for security testing. I
+                have knowledge of NMAP, WIRESHARK, DDOS attacks, Zphisher, and Hydra for password testing. I'm not a
+                hacker, but I want to become a cybersecurity specialist or web developer.</p>
+        </header>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Contact Information</h2>
+            </div>
+            <div class="section-content">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p>cuvy3010@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Phone Number</h3>
+                        <p>0768547306</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Address</h3>
+                        <p>61 Le Quang Dao Street, Da Nang</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>LinkedIn</h3>
+                        <p><a href="https://www.linkedin.com/in/nguy%E1%BB%85n-mai-tr%E1%BB%8Dng-v%C4%A9-b5b3a6323/">View
+                                Profile</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Education</h2>
+            </div>
+            <div class="section-content">
+                <div class="education-content">
+                    <p>I'm a student at Duy Tan University studying IT (Information Technology). I got in touch with
+                        computers when I was a child, and I feel something special when I write code - it makes me feel
+                        happy and excited. I love programming languages and can code all day. That's why I chose IT as
+                        my major. I use Kali Linux to check web security and find vulnerabilities. I have knowledge of
+                        NMAP, WIRESHARK, DDOS attacks, Zphisher, and Hydra - tools commonly used in cybersecurity. My
+                        programming languages include HTML, CSS, JS, PHP, SQL, Python, and C++. I can build websites and
+                        develop tools using these technologies.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+            </div>
+            <div class="section-content">
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <strong>HTML:</strong> Write content for web pages
+                    </div>
+                    <div class="skill-item">
+                        <strong>CSS:</strong> Decorate web pages with colors, animations, etc.
+                    </div>
+                    <div class="skill-item">
+                        <strong>JavaScript:</strong> User interaction through forms, inputs, web management
+                    </div>
+                    <div class="skill-item">
+                        <strong>PHP:</strong> Data processing, database connection and interaction
+                    </div>
+                    <div class="skill-item">
+                        <strong>SQL:</strong> Database interaction and management
+                    </div>
+                    <div class="skill-item">
+                        <strong>Python & C++:</strong> Tool development and programming
+                    </div>
+                    <div class="skill-item">
+                        <strong>Kali Linux:</strong> Security-focused operating system
+                    </div>
+                    <div class="skill-item">
+                        <strong>NMAP:</strong> Network scanning and information gathering
+                    </div>
+                    <div class="skill-item">
+                        <strong>WIRESHARK:</strong> Network traffic monitoring and analysis
+                    </div>
+                    <div class="skill-item">
+                        <strong>Security Tools:</strong> DDOS testing, Zphisher, Hydra
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+            </div>
+            <div class="section-content">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <p><strong>Web Development Project:</strong> Created a responsive website using HTML, CSS, and
+                            JavaScript. I created a website for my uncle where you can book cars online and pay online
+                            too. When I don't have projects, I usually create websites based on znews.vn or 24h.com.vn
+                            to practice my skills.</p>
+                        <div class="project-image">
+                            <img src="khainguyen.png" alt="Car Booking Website Screenshot" onclick="openModal(this)">
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <p><strong>Cybersecurity Project:</strong> Conducted security assessments using NMAP and
+                            WIRESHARK. I can also use DDOS to test websites at layer 7 and layer 4 OSI model. Besides
+                            that, I can use zphisher for security testing on various platforms. This is just for
+                            learning purposes and I know how to protect websites from such attacks.</p>
+                        <div class="project-image">
+                            <img src="kali-linux.png" alt="Kali Linux Security Testing Interface"
+                                onclick="openModal(this)">
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <p><strong>Security Testing Tool:</strong> Developed security testing tools using Hydra. These
+                            tools are written in Python and C++ to test password security of websites, phones, email,
+                            and social media platforms. This is a tool I wrote for security assessment purposes, written
+                            in Python.</p>
+                        <div class="project-image">
+                            <img src="cracking.png" alt="Password Security Testing Tool Interface"
+                                onclick="openModal(this)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Work Experience</h2>
+            </div>
+            <div class="section-content">
+                <ul class="experience-list">
+                    <li class="experience-item">
+                        <p>I'm a second-year student with a passion for coding and cybersecurity. In my free time, I
+                            study CCNA, cybersecurity, Python, and enjoy reading. I'm seeking freelance IT opportunities
+                            that complement my studies.</p>
+                    </li>
+                    <li class="experience-item">
+                        <p>I speak English fluently and can read technical documentation. I can communicate effectively
+                            with international clients. I'm a fast learner who works well under pressure and consider
+                            myself disciplined and responsible. My motto is "Better early than never" and "I'm a winner,
+                            so I do everything to achieve my goals."</p>
+                    </li>
+                    <li class="experience-item">
+                        <p>I worked at Loving Vegan Restaurant as a waiter for 3 years, serving primarily foreign
+                            customers, which improved my English skills. I led a team of 4 people, and we consistently
+                            met project deadlines for website development clients.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <div id="imageModal" class="image-modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const caption = document.getElementById('modalCaption');
+
+            modal.classList.add('active');
+            modalImg.src = img.src;
+            caption.textContent = img.alt;
+
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (!event || event.target.id === 'imageModal' || event.target.classList.contains('close-modal')) {
+                const modal = document.getElementById('imageModal');
+                modal.classList.remove('active');
+
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        document.getElementById('modalImage').addEventListener('click', function (event) {
+            event.stopPropagation();
+        });
+    </script>
+</body>
+
+</html>
